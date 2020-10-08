@@ -1,6 +1,8 @@
 # OpenAI-CarRacing-v0
 Mini-project on imitation learning, training an agent to play OpenAI Gym's CarRacing-v0 game.
-Final agent is an ensemble of two seperate agents trained on different data. test_ensemble.py is hard-coded to showcase this agent
+Final agent is an ensemble of two seperate agents trained on different data. 
+I collected the data, which is 50,000 time steps long in total.
+test_ensemble.py is hard-coded to showcase this agent
 
 See https://gym.openai.com/envs/CarRacing-v0/ for more details on the game
 
