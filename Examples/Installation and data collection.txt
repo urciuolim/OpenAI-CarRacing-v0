@@ -1,0 +1,64 @@
+(base) skis@DESKTOP-F2S3NMR:~$ cd Test
+
+(base) skis@DESKTOP-F2S3NMR:~/Test$ ls
+Examples  LICENSE  README.md  data  drive_manually.py  model  model.py  test_agent.py  test_ensemble.py  train_agent.py  utils.py
+
+(base) skis@DESKTOP-F2S3NMR:~/Test$ conda create --name TEST pip python=3.7
+Collecting package metadata (current_repodata.json): done
+
+... omitted for brevity ...
+
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate TEST
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(base) skis@DESKTOP-F2S3NMR:~/Test$ conda activate TEST
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ conda install pytorch
+Collecting package metadata (current_repodata.json): done
+
+... omitted for brevity ...
+
+Executing transaction: done
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ conda install torchvision
+Collecting package metadata (current_repodata.json): done
+
+... omitted for brevity ...
+
+Executing transaction: done
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ conda install matplotlib
+Collecting package metadata (current_repodata.json): done
+
+... omitted for brevity ...
+
+Executing transaction: done
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ pip install gym
+Processing /home/skis/.cache/pip/wheels/d1/81/4b/dd9c029691022cb957398d1f015e66b75e37637dda61abdf58/gym-0.17.3-py3-none-any.whl
+
+... omitted for brevity ...
+
+Successfully installed cloudpickle-1.6.0 future-0.18.2 gym-0.17.3 pyglet-1.5.0 scipy-1.5.2
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ pip install gym[Box2d]
+Requirement already satisfied: gym[Box2d] in /home/skis/miniconda3/envs/TEST/lib/python3.7/site-packages (0.17.3)
+
+... omitted for brevity ...
+
+Installing collected packages: box2d-py
+Successfully installed box2d-py-2.3.8
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ python drive_manually.py --collect_data
+
+... OpenAI Gym CarRacing-v0 should appear on your screen
+... Controls are arrow keys, CTRL-C in terminal to exit the game
+... drive_manually.py will save play session every 5000 steps
+... The game will also freeze, but will pick up as if nothing happened

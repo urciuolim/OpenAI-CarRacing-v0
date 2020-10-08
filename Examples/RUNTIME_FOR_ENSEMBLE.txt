@@ -1,0 +1,166 @@
+(gym) skis@DESKTOP-F2S3NMR:~/DRL/HW1/Part1$ python train_agent.py -h
+usage: train_agent.py [-h] [--data DATA] [--save SAVE] [--epochs EPOCHS]
+                      [--lr LR] [--momentum MOMENTUM] [--log LOG] [--cap CAP]
+                      model_num [opt_his_num]
+
+positional arguments:
+  model_num            0=CNN_Agent, 1=CNN_History_Agent
+  opt_his_num          Optional history length
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --data DATA          Name of data file within ./data
+  --save SAVE          Path to save model
+  --epochs EPOCHS      Max number of training epochs
+  --lr LR              Learning rate hyperparameter
+  --momentum MOMENTUM  Momentum hyperparameter
+  --log LOG            Logging frequency
+  --cap CAP            Cap limit for data to train on
+
+(gym) skis@DESKTOP-F2S3NMR:~/DRL/HW1/Part1$ python train_agent.py 1 3 --data data_urciuoli.pkl.gzip --save ./model/urc_original_3hiscnn_100_epochs_slow_but_steady.pth --epochs 100
+Args recieved:
+Model Number - 1
+History Length - 3
+Data File - data_urciuoli.pkl.gzip
+Save Path - ./model/fav/urc_original_3hiscnn_100_epochs_slow_but_steady.pth
+Epochs - 100
+Learning Rate - 0.0001
+Momentum - 0.9
+Logging Interval - 10
+Cap - None
+... read data
+Training: 22500 samples
+Validation: 2500 samples
+... preprocessing
+MODEL DIMENSIONS AND NUM OF PARAMETERS
+--------------------------------------
+Input           |               torch.Size([64, 1, 96, 96])
+Conv2d          |               torch.Size([64, 8, 92, 92])             |               208
+MaxPool2d               |               torch.Size([64, 8, 30, 30])             |               0
+ReLU            |               torch.Size([64, 8, 30, 30])             |               0
+Conv2d          |               torch.Size([64, 16, 26, 26])            |               3216
+Dropout2d               |               torch.Size([64, 16, 26, 26])            |               0
+MaxPool2d               |               torch.Size([64, 16, 8, 8])              |               0
+ReLU            |               torch.Size([64, 16, 8, 8])              |               0
+Flatten         |               torch.Size([64, 1024])          |               0
+Linear          |               torch.Size([64, 64])            |               65600
+ReLU            |               torch.Size([64, 64])            |               0
+Padding         |               torch.Size([66, 64])            |               0
+Conv1d          |               torch.Size([64, 256])           |               49408
+Linear          |               torch.Size([64, 1000])          |               257000
+ReLU            |               torch.Size([64, 1000])          |               0
+Linear          |               torch.Size([64, 16])            |               16016
+ReLU            |               torch.Size([64, 16])            |               0
+Linear          |               torch.Size([64, 3])             |               51
+Tanh            |               torch.Size([64, 3])             |               0
+Total Parameters: 391499
+Train Epoch: 0 [0/22500 (0%)]   Loss: 19.090406
+Train Epoch: 0 [640/22500 (3%)] Loss: 10.154437
+Train Epoch: 0 [1280/22500 (6%)]        Loss: 7.393872
+Train Epoch: 0 [1920/22500 (9%)]        Loss: 38.019791
+Train Epoch: 0 [2560/22500 (11%)]       Loss: 37.053398
+
+... omitted for brevity
+
+(gym) skis@DESKTOP-F2S3NMR:~/DRL/HW1/Part1$ python train_agent.py 1 3 --data data_urciuoli_agg2.pkl.gzip --save ./model/urc_agg_3hiscnn_45et_epochs_go_fast.pth --epochs 100
+Args recieved:
+Model Number - 1
+History Length - 3
+Data File - data_urciuoli_agg2.pkl.gzip
+Save Path - ./model/fav/urc_agg_3hiscnn_45et_epochs_go_fast.pth
+Epochs - 100
+Learning Rate - 0.0001
+Momentum - 0.9
+Logging Interval - 10
+Cap - None
+... read data
+Training: 22500 samples
+Validation: 2500 samples
+... preprocessing
+MODEL DIMENSIONS AND NUM OF PARAMETERS
+--------------------------------------
+Input           |               torch.Size([64, 1, 96, 96])
+Conv2d          |               torch.Size([64, 8, 92, 92])             |               208
+MaxPool2d               |               torch.Size([64, 8, 30, 30])             |               0
+ReLU            |               torch.Size([64, 8, 30, 30])             |               0
+Conv2d          |               torch.Size([64, 16, 26, 26])            |               3216
+Dropout2d               |               torch.Size([64, 16, 26, 26])            |               0
+MaxPool2d               |               torch.Size([64, 16, 8, 8])              |               0
+ReLU            |               torch.Size([64, 16, 8, 8])              |               0
+Flatten         |               torch.Size([64, 1024])          |               0
+Linear          |               torch.Size([64, 64])            |               65600
+ReLU            |               torch.Size([64, 64])            |               0
+Padding         |               torch.Size([66, 64])            |               0
+Conv1d          |               torch.Size([64, 256])           |               49408
+Linear          |               torch.Size([64, 1000])          |               257000
+ReLU            |               torch.Size([64, 1000])          |               0
+Linear          |               torch.Size([64, 16])            |               16016
+ReLU            |               torch.Size([64, 16])            |               0
+Linear          |               torch.Size([64, 3])             |               51
+Tanh            |               torch.Size([64, 3])             |               0
+Total Parameters: 391499
+Train Epoch: 0 [0/22500 (0%)]   Loss: 44.549515
+Train Epoch: 0 [640/22500 (3%)] Loss: 40.255680
+Train Epoch: 0 [1280/22500 (6%)]        Loss: 48.142563
+Train Epoch: 0 [1920/22500 (9%)]        Loss: 33.567158
+Train Epoch: 0 [2560/22500 (11%)]       Loss: 35.282513
+Train Epoch: 0 [3200/22500 (14%)]       Loss: 38.061207
+Train Epoch: 0 [3840/22500 (17%)]       Loss: 50.655876
+Train Epoch: 0 [4480/22500 (20%)]       Loss: 41.674553
+
+... omitted for brevity
+
+(gym) skis@DESKTOP-F2S3NMR:~/DRL/HW1/Part1$ python test_ensemble.py
+ WEIGHT: 75 %
+MODEL DIMENSIONS AND NUM OF PARAMETERS
+--------------------------------------
+Input           |               torch.Size([3, 1, 96, 96])
+Conv2d          |               torch.Size([3, 8, 92, 92])              |               208
+MaxPool2d               |               torch.Size([3, 8, 30, 30])              |               0
+ReLU            |               torch.Size([3, 8, 30, 30])              |               0
+Conv2d          |               torch.Size([3, 16, 26, 26])             |               3216
+Dropout2d               |               torch.Size([3, 16, 26, 26])             |               0
+MaxPool2d               |               torch.Size([3, 16, 8, 8])               |               0
+ReLU            |               torch.Size([3, 16, 8, 8])               |               0
+Flatten         |               torch.Size([3, 1024])           |               0
+Linear          |               torch.Size([3, 64])             |               65600
+ReLU            |               torch.Size([3, 64])             |               0
+Padding         |               torch.Size([5, 64])             |               0
+Conv1d          |               torch.Size([3, 256])            |               49408
+Linear          |               torch.Size([3, 1000])           |               257000
+ReLU            |               torch.Size([3, 1000])           |               0
+Linear          |               torch.Size([3, 16])             |               16016
+ReLU            |               torch.Size([3, 16])             |               0
+Linear          |               torch.Size([3, 3])              |               51
+Tanh            |               torch.Size([3, 3])              |               0
+Total Parameters: 391499
+ WEIGHT: 25 %
+MODEL DIMENSIONS AND NUM OF PARAMETERS
+--------------------------------------
+Input           |               torch.Size([3, 1, 96, 96])
+Conv2d          |               torch.Size([3, 8, 92, 92])              |               208
+MaxPool2d               |               torch.Size([3, 8, 30, 30])              |               0
+ReLU            |               torch.Size([3, 8, 30, 30])              |               0
+Conv2d          |               torch.Size([3, 16, 26, 26])             |               3216
+Dropout2d               |               torch.Size([3, 16, 26, 26])             |               0
+MaxPool2d               |               torch.Size([3, 16, 8, 8])               |               0
+ReLU            |               torch.Size([3, 16, 8, 8])               |               0
+Flatten         |               torch.Size([3, 1024])           |               0
+Linear          |               torch.Size([3, 64])             |               65600
+ReLU            |               torch.Size([3, 64])             |               0
+Padding         |               torch.Size([5, 64])             |               0
+Conv1d          |               torch.Size([3, 256])            |               49408
+Linear          |               torch.Size([3, 1000])           |               257000
+ReLU            |               torch.Size([3, 1000])           |               0
+Linear          |               torch.Size([3, 16])             |               16016
+ReLU            |               torch.Size([3, 16])             |               0
+Linear          |               torch.Size([3, 3])              |               51
+Tanh            |               torch.Size([3, 3])              |               0
+Total Parameters: 391499
+/home/skis/miniconda3/envs/gym/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: WARN: Box bound precision lowered by casting to float32
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+
+... omitted for brevity
+
+(gym) skis@DESKTOP-F2S3NMR:~/DRL/HW1/Part1$ echo "OpenAI racing game should open with agent playing"
+(gym) skis@DESKTOP-F2S3NMR:~/DRL/HW1/Part1$ echo "I am using Windows Subsystem for Linux (WSL), but that shouldn't be an issue"

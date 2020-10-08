@@ -1,0 +1,56 @@
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ ls data
+data_urciuoli.pkl.gzip  data_urciuoli_agg2.pkl.gzip  data_urciuoli_safe.pkl.gzip
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ python train_agent.py -h
+usage: train_agent.py [-h] [--data DATA] [--save SAVE] [--epochs EPOCHS]
+                      [--lr LR] [--momentum MOMENTUM] [--log LOG] [--cap CAP]
+                      model_num [opt_his_num]
+
+positional arguments:
+  model_num            0=CNN_Agent, 1=CNN_History_Agent
+  opt_his_num          Optional history length
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --data DATA          Name of data file within ./data
+  --save SAVE          Path to save model
+  --epochs EPOCHS      Max number of training epochs
+  --lr LR              Learning rate hyperparameter
+  --momentum MOMENTUM  Momentum hyperparameter
+  --log LOG            Logging frequency
+  --cap CAP            Cap limit for data to train on
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ python train_agent.py 0 --data data_urciuoli.pkl.gzip --save ./model/name_of_model.pth --epochs 100
+Args recieved:
+Model Number - 0
+History Length - None
+Data File - data_urciuoli.pkl.gzip
+Save Path - ./model/name_of_model.pth
+Epochs - 100
+Learning Rate - 0.0001
+Momentum - 0.9
+Logging Interval - 10
+Cap - None
+... read data
+Training: 22500 samples
+Validation: 2500 samples
+... preprocessing
+MODEL DIMENSIONS AND NUM OF PARAMETERS
+--------------------------------------
+Input           |               torch.Size([64, 1, 96, 96])
+Conv2d          |               torch.Size([64, 8, 92, 92])             |               208
+MaxPool2d               |               torch.Size([64, 8, 30, 30])             |               0
+ReLU            |               torch.Size([64, 8, 30, 30])             |               0
+Conv2d          |               torch.Size([64, 16, 26, 26])            |               3216
+Dropout2d               |               torch.Size([64, 16, 26, 26])            |               0
+MaxPool2d               |               torch.Size([64, 16, 8, 8])              |               0
+ReLU            |               torch.Size([64, 16, 8, 8])              |               0
+Flatten         |               torch.Size([64, 1024])          |               0
+Linear          |               torch.Size([64, 100])           |               102500
+Linear          |               torch.Size([64, 3])             |               303
+Total Parameters: 106227
+Train Epoch: 0 [0/22500 (0%)]   Loss: 170.085632
+Train Epoch: 0 [640/22500 (3%)] Loss: 186.235672
+
+... Omitted for brevity
+

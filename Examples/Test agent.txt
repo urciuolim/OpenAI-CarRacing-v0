@@ -1,0 +1,27 @@
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ python test_agent.py -h
+usage: test_agent.py [-h] [--model MODEL] [--results RESULTS]
+                     model_num [opt_his_num]
+
+positional arguments:
+  model_num          0=CNN_Agent, 1=CNN_History_Agent
+  opt_his_num        Optional history length
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --model MODEL      Path to model file
+  --results RESULTS  First part of path to results save location (data/time
+                     will be appended)
+
+(TEST) skis@DESKTOP-F2S3NMR:~/Test$ python test_agent.py 1 3 --model ./model/urc_original_3hiscnn_100_epochs_slow_but_steady.pth --results ./result
+s
+Args received:
+Model Number - 1
+History Length - 3
+Model File = ./model/urc_original_3hiscnn_100_epochs_slow_but_steady.pth
+Results Save Path - ./results
+/home/skis/miniconda3/envs/TEST/lib/python3.7/site-packages/gym/logger.py:30: UserWarning: WARN: Box bound precision lowered by casting to float32
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+Track generation: 1124..1409 -> 285-tiles track
+
+... Omitted for brevity
+... CarRacing-v0 should have opened, with agent already playing the game
